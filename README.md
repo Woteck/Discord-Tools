@@ -1,2 +1,2 @@
 # Discord-Tools
-funny
+fun, only for goods ppl
