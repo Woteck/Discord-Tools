@@ -9,7 +9,7 @@ def genNitroCode(isclassic=False):
     <returns>
     return a type code.
     """
-    if isclassic is False:
+    if isclassic:
         return ''.join(random.choices(string.ascii_letters + string.digits, k=16))
     else:
         return ''.join(random.choices(string.ascii_letters + string.digits, k=24))
@@ -28,6 +28,6 @@ if __name__ == '__main__':
         for _ in range(count):
             code = genNitroCode()
             print(f'{Fore.BLUE + Style.BRIGHT}[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {code}', Fore.WHITE + Style.NORMAL)
-            f.write(code + '\n')
+            f.write(f'discord.gift/{code}\n')
     print('Done.')
     input()
