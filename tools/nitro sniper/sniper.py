@@ -3,8 +3,8 @@ from discord.ext import commands
 from colorama import Fore, init
 
 init()
-data = {}
 
+data = {}
 with open('token.json') as f:
     data = json.load(f)
 token = data['token']
