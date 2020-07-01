@@ -22,12 +22,14 @@ if __name__ == '__main__':
     init()
 
     count = int(input('How many codes do you want? \n >'))
+    prefix = str(input('Do you want to add discord.gift prefix? y/n \n >'))
+    prefix = 'discord.gift/' if prefix == 'y' else ''
 
     CODES_FILE = 'nitro_codes.txt'
     with open(CODES_FILE, 'a+') as f:
         for _ in range(count):
             code = genNitroCode()
             print(f'{Fore.BLUE + Style.BRIGHT}[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {code}', Fore.WHITE + Style.NORMAL)
-            f.write(f'discord.gift/{code}\n')
+            f.write(f'{prefix}{code}\n')
     print('Done.')
     input()
