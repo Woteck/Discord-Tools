@@ -21,11 +21,14 @@ if __name__ == '__main__':
 
     init()
 
-    count = int(input('How many codes do you want? \n >'))
-    prefix = str(input('Do you want to add discord.gift prefix? y/n \n >'))
+    count = int(input('How many codes do you want? \n > '))
+
+    prefix = str(input('Do you want to add discord.gift prefix? y/n \n > '))
     prefix = 'discord.gift/' if prefix == 'y' else ''
 
-    CODES_FILE = 'nitro_codes.txt'
+    CODES_FILE = str(input('Do you want to custom the codes file? y/n \n > '))
+    CODES_FILE = str(input('Enter file name (example.txt) \n > ')) if CODES_FILE == 'y' else 'nitro_codes.txt'
+
     with open(CODES_FILE, 'a+') as f:
         for _ in range(count):
             code = genNitroCode()
