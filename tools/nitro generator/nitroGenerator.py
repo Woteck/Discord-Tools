@@ -21,6 +21,9 @@ if __name__ == '__main__':
 
     init()
 
+    code = str(input('Do you want the Nitro codes to be classic? y/n \n > '))
+    code = True if code == 'y' else False
+
     count = int(input('How many codes do you want? \n > '))
 
     prefix = str(input('Do you want to add discord.gift prefix? y/n \n > '))
@@ -31,7 +34,7 @@ if __name__ == '__main__':
 
     with open(CODES_FILE, 'a+') as f:
         for _ in range(count):
-            code = genNitroCode()
+            code = genNitroCode(code)
             print(f'{Fore.BLUE + Style.BRIGHT}[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {code}', Fore.WHITE + Style.NORMAL)
             f.write(f'{prefix}{code}\n')
     print('Done.')
