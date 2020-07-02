@@ -29,7 +29,7 @@ if __name__ == '__main__':
     prefix = str(input('Do you want to add discord.gift prefix? y/n \n > '))
     prefix = 'discord.gift/' if prefix == 'y' else ''
 
-    CODES_FILE = str(input('Do you want to custom the codes file? y/n \n > '))
+    CODES_FILE = str(input('Do you want to use a custom codes file? (by default \'nitro_codes.txt\') y/n \n > '))
     CODES_FILE = str(input('Enter file name (example.txt) \n > ')) if CODES_FILE == 'y' else 'nitro_codes.txt'
 
     with open(CODES_FILE, 'a+') as f:
