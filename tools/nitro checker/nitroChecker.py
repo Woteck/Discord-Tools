@@ -13,19 +13,16 @@ def checkNitro(code, token, proxy=None, timeout=5):
     True if code is valid (code 200 from Discord) else False
     """
     URL = f'https://discordapp.com/api/v6/entitlements/gift-codes/{code}/redeem'
-    try:
-        if proxy is not None:
-            proxy_dict = {"http" : proxy, "https" : proxy}
-            result = requests.post(URL, headers={'authorization': token}, proxies=proxy_dict, timeout=timeout)
-        else:
-            result = requests.post(URL, headers={'authorization': token})
-    
-        if 'nitro' in result.text:
-            return True
-        else: 
-            return False
-    except:
-        pass
+    if proxy is not None:
+        proxy_dict = {"http" : proxy, "https" : proxy}
+        result = requests.post(URL, headers={'authorization': token}, proxies=proxy_dict, timeout=timeout)
+    else:
+        result = requests.post(URL, headers={'authorization': token})
+
+    if 'nitro' in result.text:
+        return True
+    else: 
+        return False
 
 
 if __name__ == '__main__':
@@ -66,7 +63,10 @@ if __name__ == '__main__':
             else:
                 proxy = None
 
-            status = checkNitro(code=code, token=userToken, proxy=proxy)
+            try:
+                status = checkNitro(code=code, token=userToken, proxy=proxy)
+            except:
+                continue
 
             if status:
                 print(f'{Fore.GREEN + Style.BRIGHT}[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] {code}', Fore.WHITE + Style.NORMAL)
