@@ -1,0 +1,1 @@
+from discordTools.token_checker.tokenChecker import checkToken

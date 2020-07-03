@@ -1,6 +1,17 @@
 import requests
 
 def webhookSend(url, name, **kwargs):
+    """
+    Send a payload through a webhook.
+    <params>
+    url        : string
+    name       : string
+    message    : string
+    payload    : json
+
+    <returns>
+    True if code is valid (code 204 from Discord) else False
+    """
     message = kwargs.get('message')
     if message is not None:
         payload = {'content': str(message), 'username': str(name)}
